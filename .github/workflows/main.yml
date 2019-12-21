@@ -12,8 +12,8 @@ jobs:
     steps:
     #- uses: docker://gableroux/unity3d:2019.2.11f1
     - uses: actions/checkout@v2
-    - name: Before
-      run: chmod +x ./ci/before_script.sh && ./ci/before_script.sh
+    #- name: Before
+     # run: chmod +x ./ci/before_script.sh && ./ci/before_script.sh
     - name: Edit mode tests
       run: chmod +x ./ci/docker_test.sh && ./ci/docker_test.sh
       env:
