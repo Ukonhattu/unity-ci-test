@@ -11,6 +11,8 @@ jobs:
 
     steps:
     #- uses: docker://gableroux/unity3d:2019.2.11f1
+    - name: Debug
+      run: ls
     - name: Before
       run: chmod +x ./ci/before_script.sh && ./ci/before_script.sh
     - name: Edit mode tests
