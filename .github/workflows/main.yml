@@ -2,16 +2,22 @@ name: CI
 
 on: [push]
 
-jobs:
-  build:
+env: 
+  BUILD_NAME: ExampleProjectName
 
+jobs:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+    - uses: docker://gableroux/unity3d:2019.2.11f1
+    - name: Before
+      run: chmod +x ./ci/before_script.sh && ./ci/before_script.sh
+    - name: Edit mode tests
+      run: chmod +x ./ci/test.sh && ./ci/test.sh
+      env:
+        TEST_PLATFORM: editmode
+    - name: Play mode tests
+      run: chmod +x ./ci/test.sh && ./ci/test.sh
+      env:
+        TEST_PLATFORM: playmode
