@@ -18,7 +18,7 @@ jobs:
     - name: Sudo
       run: apt-get update && apt-get install sudo
     - name: Chown
-      run: sudo chown -R $USER:$USER /
+      run: sudo chown -R $USER:$USER /root
     - name: Before
       run: chmod +x ./ci/before_script.sh && ./ci/before_script.sh
     - name: Edit mode tests
