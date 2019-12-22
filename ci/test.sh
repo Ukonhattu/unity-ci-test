@@ -11,7 +11,7 @@ ${UNITY_EXECUTABLE:-xvfb-run --auto-servernum --server-args='-screen 0 640x480x2
   -testResults $(pwd)/$TEST_PLATFORM-results.xml \
   -logFile /dev/stdout \
   -batchmode \
-  -manuelLicenseFile /root/.local/share/unity3d/Unity/Unity_lic.ulf
+  -manualLicenseFile /root/.local/share/unity3d/Unity/Unity_lic.ulf
 
 UNITY_EXIT_CODE=$?
 
