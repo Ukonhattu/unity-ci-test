@@ -4,7 +4,7 @@ set -x
 
 echo "Testing for $TEST_PLATFORM"
 
-${UNITY_EXECUTABLE:-sudo xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' /opt/Unity/Editor/Unity} \
+${UNITY_EXECUTABLE:-xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' /opt/Unity/Editor/Unity} \
   -projectPath $(pwd) \
   -runTests \
   -testPlatform $TEST_PLATFORM \
