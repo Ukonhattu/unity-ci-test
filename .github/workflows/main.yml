@@ -5,6 +5,7 @@ on: [push]
 env: 
   BUILD_NAME: ExampleProjectName
   UNITY_LICENSE_CONTENT: ${{ secrets.UNITY_LICENSE_CONTENT }}
+  UNITY_ACTIVATION_FILE: ./unity3d.alf
 
 jobs:
   test:
