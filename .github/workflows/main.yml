@@ -6,6 +6,8 @@ env:
   BUILD_NAME: ExampleProjectName
   UNITY_LICENSE_CONTENT: ${{ secrets.UNITY_LICENSE_CONTENT }}
   UNITY_ACTIVATION_FILE: ./unity3d.alf
+  UNITY_USERNAME: ${{ secrets.UNITY_USERNAME }}
+  UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
 
 jobs:
   test:
