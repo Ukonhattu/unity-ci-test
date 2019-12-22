@@ -15,6 +15,10 @@ jobs:
     container: gableroux/unity3d:2019.2.11f1
     steps:
     - uses: actions/checkout@v2
+    - name: Sudo
+      run: apt-get update && apt-get install sudo
+    - name: Chown
+      run: sudo chown -R $USER:$USER /
     - name: Before
       run: chmod +x ./ci/before_script.sh && ./ci/before_script.sh
     - name: Edit mode tests
