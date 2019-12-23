@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
+
 set -x
 
 echo "Building for $BUILD_TARGET"
@@ -12,8 +12,7 @@ ${UNITY_EXECUTABLE:-xvfb-run --auto-servernum --server-args='-screen 0 640x480x2
   -projectPath $(pwd) \
   -logFile /dev/stdout \
   -batchmode \
-  -manualLicenseFile /root/.local/share/unity3d/Unity/Unity_lic.ulf \
-  -quit
+  -manualLicenseFile /root/.local/share/unity3d/Unity/Unity_lic.ulf
 
 ${UNITY_EXECUTABLE:-xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' /opt/Unity/Editor/Unity} \
   -projectPath $(pwd) \
