@@ -28,7 +28,7 @@ jobs:
       env:
         TEST_PLATFORM: playmode
     - name: Build StandaloneLinux64
-        run: ./ci/before_script.sh && chmod +x ./ci/build.sh && ./ci/build.sh
-        env:
-          BUILD_TARGET: StandaloneLinux64
+      run: ./ci/before_script.sh && chmod +x ./ci/build.sh && ./ci/build.sh
+      env:
+        BUILD_TARGET: StandaloneLinux64
     
