@@ -59,3 +59,7 @@ jobs:
       run: chmod +x ./ci/build.sh && ./ci/build.sh
       env:
         BUILD_TARGET: StandaloneWindows64
+    - uses: actions/upload-artifact@v1
+      with:
+        name: WindowsBuild
+        path: ./Builds/StandaloneWindows64/
