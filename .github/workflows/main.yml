@@ -31,8 +31,6 @@ jobs:
   Build_StandaloneLinux64:
     runs-on: ubuntu-latest
     container: gableroux/unity3d:2019.2.11f1
-    env:
-      BUILD_TARGET: StandaloneLinux64
     steps:
     - uses: actions/checkout@v2
     - name: Chown
@@ -41,12 +39,12 @@ jobs:
       run: chmod +x ./ci/before_script.sh && ./ci/before_script.sh
     - name: Build StandaloneLinux64
       run: chmod +x ./ci/build.sh && ./ci/build.sh
+      env:
+        BUILD_TARGET: StandaloneLinux64
 
   Build_StandaloneWindows64:
     runs-on: ubuntu-latest
     container: gableroux/unity3d:2019.2.11f1-windows
-    env:
-      BUILD_TARGET: StandaloneWindows64
     steps:
     - uses: actions/checkout@v2
     - name: Chown
@@ -55,3 +53,5 @@ jobs:
       run: chmod +x ./ci/before_script.sh && ./ci/before_script.sh
     - name: Build StandaloneWindows64
       run: chmod +x ./ci/build.sh && ./ci/build.sh
+      env:
+        BUILD_TARGET: StandaloneWindows64
