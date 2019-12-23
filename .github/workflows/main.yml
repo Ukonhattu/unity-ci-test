@@ -41,6 +41,10 @@ jobs:
       run: chmod +x ./ci/build.sh && ./ci/build.sh
       env:
         BUILD_TARGET: StandaloneLinux64
+    - uses: actions/upload-artifact@v1
+      with:
+        name: LinuxBuild
+        path: ./Builds/StandaloneLinux64/
 
   Build_StandaloneWindows64:
     runs-on: ubuntu-latest
