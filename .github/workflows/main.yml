@@ -10,7 +10,7 @@ env:
   UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
 
 jobs:
-  test_and_build:
+  Run_Tests:
     runs-on: ubuntu-latest
     container: gableroux/unity3d:2019.2.11f1
     steps:
@@ -27,11 +27,31 @@ jobs:
       run: chmod +x ./ci/test.sh && ./ci/test.sh
       env:
         TEST_PLATFORM: playmode
+      
+  Build_StandaloneLinux64:
+    runs-on: ubuntu-latest
+    container: gableroux/unity3d:2019.2.11f1
+    env:
+      BUILD_TARGET: StandaloneLinux64
+    steps:
+    - uses: actions/checkout@v2
+    - name: Chown
+      run: chown -R root:root $HOME/
+    - name: Before
+      run: chmod +x ./ci/before_script.sh && ./ci/before_script.sh
     - name: Build StandaloneLinux64
-      run: ./ci/before_script.sh && chmod +x ./ci/build.sh && ./ci/build.sh
-      env:
-        BUILD_TARGET: StandaloneLinux64
+      run: chmod +x ./ci/build.sh && ./ci/build.sh
+
+  Build_StandaloneWindows64:
+    runs-on: ubuntu-latest
+    container: gableroux/unity3d:2019.2.11f1-windows
+    env:
+      BUILD_TARGET: StandaloneWindows64
+    steps:
+    - uses: actions/checkout@v2
+    - name: Chown
+      run: chown -R root:root $HOME/
+    - name: Before
+      run: chmod +x ./ci/before_script.sh && ./ci/before_script.sh
     - name: Build StandaloneWindows64
-      run: ./ci/before_script.sh && chmod +x ./ci/build.sh && ./ci/build.sh
-      env:
-        BUILD_TARGET: StandaloneWindows64
+      run: chmod +x ./ci/build.sh && ./ci/build.sh
