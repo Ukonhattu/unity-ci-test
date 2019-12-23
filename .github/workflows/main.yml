@@ -63,3 +63,21 @@ jobs:
       with:
         name: WindowsBuild
         path: ./Builds/StandaloneWindows64/
+
+  Build_StandaloneOSX:
+    runs-on: ubuntu-latest
+    container: gableroux/unity3d:2019.2.11f1-mac
+    steps:
+    - uses: actions/checkout@v2
+    - name: Chown
+      run: chown -R root:root $HOME/
+    - name: Before
+      run: chmod +x ./ci/before_script.sh && ./ci/before_script.sh
+    - name: Build StandaloneOSX
+      run: chmod +x ./ci/build.sh && ./ci/build.sh
+      env:
+        BUILD_TARGET: StandaloneOSX
+    - uses: actions/upload-artifact@v1
+      with:
+        name: OSXBuild
+        path: ./Builds/StandaloneOSX/
