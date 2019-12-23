@@ -10,7 +10,7 @@ env:
   UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
 
 jobs:
-  test:
+  test_and_build:
     runs-on: ubuntu-latest
     container: gableroux/unity3d:2019.2.11f1
     steps:
@@ -31,4 +31,7 @@ jobs:
       run: ./ci/before_script.sh && chmod +x ./ci/build.sh && ./ci/build.sh
       env:
         BUILD_TARGET: StandaloneLinux64
-    
+    - name: Build StandaloneWindows64
+      run: ./ci/before_script.sh && chmod +x ./ci/build.sh && ./ci/build.sh
+      env:
+        BUILD_TARGET: StandaloneWindows64
